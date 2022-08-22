@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<launch>
+  <node name="run_bringup" pkg="phoenix1_bringup" type="run_bringup.bash" output="screen" />
+</launch>

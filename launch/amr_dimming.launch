@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+  <node pkg="rosserial_python" type="serial_node.py" name="amr_dimming" output="screen">
+    <param name="port" value="/dev/ttydimming" />
+    <param name="baud" value="57600" />
+  </node>
+</launch>

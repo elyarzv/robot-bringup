@@ -1,0 +1,19 @@
+scan_filter_chain:
+ - name: speckles
+   type: laser_filters/LaserScanSpeckleFilter
+   params:
+     filter_type: 0
+     max_range: 25
+     max_range_difference: 0.05
+     filter_window: 2
+ - name: box
+   type: laser_filters/LaserScanBoxFilter
+   params:
+     box_frame: base_link #base_footprint
+     max_x: 0.412
+     max_y: 0.293
+     max_z: 1.721
+     min_x: -0.444
+     min_y: -0.293
+     min_z: -0.3
+     invert: false

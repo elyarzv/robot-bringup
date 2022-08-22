@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+ <arg name="file_name" default="phoenix1"/>     
+  <node pkg="ais-bigtop-rosbags" type="prog_record" name="recorder_node" output="screen" respawn="true">
+    <param name="topic_name_file" value="$(find phoenix1_bringup)/config/topics.config"/>
+    <param name="start_topic" value="/record/start"/>
+    <param name="stop_topic" value="/record/stop"/>
+    <param name="data_directory" value="$(optenv RUNTIME_LOG_FOLDER /root/.ais/logs/unknown)"/>
+    <param name="file_prefix" value="$(arg file_name)"/>
+  </node>
+
+  <include file="$(find ais-bigtop-rosbags)/launch/perception_record.launch">
+  </include>
+</launch>

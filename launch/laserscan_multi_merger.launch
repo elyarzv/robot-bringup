@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<launch>
+  <node pkg="ira_laser_tools" name="laserscan_multi_merger" type="laserscan_multi_merger" output="screen" >
+    <param name="destination_frame" value="base_link"/>
+    <param name="cloud_destination_topic" value="/merged_cloud"/>
+    <param name="scan_destination_topic" value="/scan_multi"/>
+    <param name="laserscan_topics" value ="/FrontLidar/scan_topic /BackLidar/scan_topic" /> 
+    <param name="angle_min" value="-3.14"/>
+    <param name="angle_max" value="3.14"/>
+    <param name="angle_increment" value="0.006"/>
+    <param name="scan_time" value="0.02"/>
+    <param name="range_min" value="0.05"/>
+    <param name="range_max" value="30.0"/>
+  </node>
+
+  <node pkg="laser_filters" type="scan_to_scan_filter_chain" output="screen" name="laser_filter">
+      <rosparam command="load" file="$(find phoenix1_parameters)/config/amr.yaml" /> 
+      <remap from="scan" to="scan_multi"/>
+      <remap from="scan_filtered" to="scan_multi_filtered" />
+      <rosparam command="load" file="$(find phoenix1_bringup)/config/speckle_filter.yaml"  subst_value="true"/>
+  </node>
+  
+</launch>

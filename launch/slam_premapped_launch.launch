@@ -1,0 +1,6 @@
+<launch>
+  <node pkg="slam_toolbox" type="localization_slam_toolbox_node" name="slam_toolbox_premapped" output="screen">
+    <rosparam command="load" file="$(find phoenix1_parameters)/config/SLAM_premapped_param.yaml" subst_value="true" />
+    <param name="map_file_name" value="$(find phoenix_navigation)/maps/sim_map/sim_map" />
+  </node>
+</launch>

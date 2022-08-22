@@ -1,0 +1,17 @@
+<launch>
+  <node pkg="amr_localization" type="amr_localization_1d_node" name="encoder_localization_node" output="screen">
+    <rosparam>
+      odometry_topic: embedded/rail_encoder
+      pose_topic: pose_1_d
+      encoder_counts_per_meter: -20000
+      topic_type: Encoder
+    </rosparam>
+  </node>
+
+  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_se" clear_params="true" output="screen">
+        <rosparam command="load" file="$(find phoenix1_parameters)/config/EKF_param.yaml" />
+  </node>
+
+  <node pkg="phoenix1_bringup" name="slam_launch_manager" type="slam_launch_manager.py" output="screen">
+  </node>
+</launch>

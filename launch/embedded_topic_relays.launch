@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<launch>
+    <node pkg="rostopic" type="rostopic" name="on_rail_publisher" args="pub -r 1 /robot_on_rails std_msgs/Bool true" output="screen"/>
+</launch>

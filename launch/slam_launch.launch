@@ -1,0 +1,8 @@
+<launch>
+  <node pkg="slam_toolbox" type="async_slam_toolbox_node" name="slam_toolbox" output="screen">
+    <rosparam command="load" file="$(find phoenix1_parameters)/config/SLAM_param.yaml" subst_value="true" />
+      <rosparam>
+      mode: mapping
+      </rosparam>
+  </node>
+</launch>
